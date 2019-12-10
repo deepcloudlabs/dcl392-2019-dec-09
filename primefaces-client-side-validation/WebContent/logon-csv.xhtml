@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html">
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1" />
+	<title>Logon Page</title>
+	<script type="text/javascript" src="js/lang_en.js" ></script>
+	<script type="text/javascript" src="js/iban-validator.js" ></script>
+	<script type="text/javascript" src="js/tckimlik-validator.js" ></script>
+	<script type="text/javascript" src="js/username-validator.js" ></script>
+	<script type="text/javascript" src="js/strongpassword-validator.js" ></script>
+</h:head>
+<h:body>
+	<f:view>
+		<h:form>
+			<h:panelGrid columns="3">
+				<p:outputLabel for="email" value="E-mail:" />
+				<p:inputText id="email" required="true"				    
+					requiredMessage="You must enter an e-mail!" 
+					value="#{UserVM.email}">
+                        <p:clientValidator  event="blur" />                                       					
+				</p:inputText>
+				<p:message id="emailError" for="email" />
+
+				<p:outputLabel for="iban" value="Iban:" />
+				<p:inputText id="iban" required="true"
+					requiredMessage="You must enter an iban!" value="#{UserVM.iban}">
+                        <p:clientValidator event="blur" />                   					
+				</p:inputText>	
+				<p:message id="ibanError" for="iban" />
+
+				<p:outputLabel for="identityNo" value="Identity no:" />
+				<p:inputText id="identityNo" required="true"
+					requiredMessage="You must enter an identity No!"
+					value="#{UserVM.identityNo}" >
+                        <p:clientValidator event="blur"  />					
+					</p:inputText>
+				<p:message id="identityNoError" for="identityNo" />
+
+				<p:outputLabel for="username" value="Username:" />
+				<p:inputText id="username" required="true"
+					requiredMessage="You must enter a username!"
+					value="#{UserVM.username}">
+                        <p:clientValidator event="blur"  />                 					
+				</p:inputText>
+				<p:message id="usernameError" for="username" />
+
+				<p:outputLabel for="password" value="Password:" />
+				<h:panelGroup>
+					<p:password id="password" required="true"
+						requiredMessage="You must enter a password!"
+						value="#{UserVM.password}">
+                        <p:clientValidator event="blur"  />                 						
+					</p:password>
+				<p:commandButton action="#{UserVM.doLogon}" 
+								 value="Logon"
+								 validateClient="true"
+				                 update="emailError usernameError passwordError ibanError identityNoError"/>
+				</h:panelGroup>
+				<p:message id="passwordError" for="password" />
+			</h:panelGrid>
+		</h:form>
+	</f:view>
+</h:body>
+</html>
