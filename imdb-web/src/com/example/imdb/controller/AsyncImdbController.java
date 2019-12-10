@@ -42,12 +42,7 @@ public class AsyncImdbController extends HttpServlet {
 
 			@Override
 			public void onTimeout(AsyncEvent event) throws IOException {
-				event.getAsyncContext().getRequest().setAttribute("error", event.getThrowable().getMessage());
-				try {
-					event.getAsyncContext().getRequest().getRequestDispatcher("error.jsp").forward(request, response);
-				} catch (ServletException e) {
-					e.printStackTrace();
-				}
+				System.err.println(event);
 			}
 
 			@Override
@@ -57,12 +52,7 @@ public class AsyncImdbController extends HttpServlet {
 
 			@Override
 			public void onError(AsyncEvent event) throws IOException {
-				event.getAsyncContext().getRequest().setAttribute("error", event.getThrowable().getMessage());
-				try {
-					event.getAsyncContext().getRequest().getRequestDispatcher("error.jsp").forward(request, response);
-				} catch (ServletException e) {
-					e.printStackTrace();
-				}
+				System.err.println(event);
 			}
 
 			@Override
