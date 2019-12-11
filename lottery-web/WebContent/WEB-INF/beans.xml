@@ -6,4 +6,7 @@
 	<interceptors>
 <!-- 		<class>com.example.lottery.aspect.AuditInterceptor</class> -->
 	</interceptors>
+<!-- 	<alternatives> -->
+<!-- 	   <class>com.example.lottery.service.impl.FastRandomNumberService</class> -->
+<!-- 	</alternatives> -->
 </beans>

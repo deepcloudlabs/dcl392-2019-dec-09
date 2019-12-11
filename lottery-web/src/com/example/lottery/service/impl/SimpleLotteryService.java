@@ -24,8 +24,9 @@ import com.example.lottery.service.RandomNumberService;
 //@Audit
 @Interceptors({ AuditInterceptor.class })
 public class SimpleLotteryService implements LotteryService {
-
+    
 	@Inject
+	@Efficient
 	private RandomNumberService randomNumberSrv;
 
 	@Override

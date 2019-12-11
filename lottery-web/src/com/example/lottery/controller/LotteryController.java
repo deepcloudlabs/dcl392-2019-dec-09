@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.example.lottery.aspect.Audit;
 import com.example.lottery.model.LotteryViewModel;
 import com.example.lottery.service.LotteryService;
+import com.example.lottery.service.impl.StudyMultipleImpl;
 
 /**
  * 
@@ -26,7 +27,8 @@ public class LotteryController extends HttpServlet {
 	
 	@Inject	private LotteryViewModel model;
 	@EJB private LotteryService lotteryService;
-
+     @Inject private StudyMultipleImpl impl;
+     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		request.getRequestDispatcher("lottery.jsp").forward(request, response);
@@ -36,6 +38,7 @@ public class LotteryController extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		int n = 1;
+		impl.fun();
 		try {
 			n = Integer.parseInt(request.getParameter("n"));
 		} catch (NumberFormatException e) {

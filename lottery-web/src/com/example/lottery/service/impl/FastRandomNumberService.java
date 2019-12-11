@@ -1,31 +1,24 @@
 package com.example.lottery.service.impl;
 
-import java.util.concurrent.ThreadLocalRandom;
+import java.util.Random;
 
 import javax.enterprise.inject.Alternative;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
-import com.example.lottery.aspect.Audit;
 import com.example.lottery.service.RandomNumberService;
 
-/**
- * 
- * @author Binnur Kurt <binnur.kurt@gmail.com>
- *
- */
 @Named
 @Singleton
-@Audit
+@Efficient
 //@Alternative
-@Fast
-public class RandomNumberServiceImpl implements RandomNumberService {
+public class FastRandomNumberService implements RandomNumberService {
 
-	private ThreadLocalRandom random = ThreadLocalRandom.current();
+	private Random random = new Random();
 
 	@Override
 	public int generate(int min, int max) {
-		System.err.println("@Fast");
+		System.err.println("@Efficient");
 		return random.nextInt(max - min + 1) + min;
 	}
 
