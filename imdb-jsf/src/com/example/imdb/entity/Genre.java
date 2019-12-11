@@ -7,6 +7,7 @@ import java.io.Serializable;
  * @author Binnur Kurt
  *
  */
+@SuppressWarnings("serial")
 public class Genre implements Serializable {
 	private int id;
 	private String name;

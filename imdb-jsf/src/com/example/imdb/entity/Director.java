@@ -4,9 +4,10 @@ import java.io.Serializable;
 
 /**
  * 
- * @author Binnur Kurt
+ * @author Binnur Kurt <binnur.kurt@gmail.com>
  *
  */
+@SuppressWarnings("serial")
 public class Director implements Serializable {
 	private int id;
 	private String name;

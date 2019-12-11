@@ -8,6 +8,7 @@ import java.util.List;
  * @author Binnur Kurt
  *
  */
+@SuppressWarnings("serial")
 public class Movie implements Serializable {
 	private int id;
 	private String title;

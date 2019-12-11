@@ -3,9 +3,7 @@ package com.example.imdb.viewmodel;
 import java.io.Serializable;
 import java.util.Collection;
 
-import javax.enterprise.context.RequestScoped;
 import javax.enterprise.context.SessionScoped;
-import javax.faces.component.behavior.AjaxBehavior;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -13,6 +11,11 @@ import javax.inject.Named;
 import com.example.imdb.entity.Movie;
 import com.example.imdb.service.MovieService;
 
+/**
+ * 
+ * @author Binnur Kurt <binnur.kurt@gmail.com>
+ *
+ */
 @SuppressWarnings("serial")
 @Named("searchView")
 @SessionScoped
