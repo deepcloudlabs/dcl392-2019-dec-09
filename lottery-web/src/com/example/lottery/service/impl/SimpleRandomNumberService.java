@@ -2,12 +2,16 @@ package com.example.lottery.service.impl;
 
 import java.security.SecureRandom;
 
-import javax.enterprise.inject.Alternative;
 import javax.inject.Named;
 import javax.inject.Singleton;
 
 import com.example.lottery.service.RandomNumberService;
 
+/**
+ * 
+ * @author Binnur Kurt <binnur.kurt@gmail.com>
+ *
+ */
 @Named
 @Singleton
 //@Default
