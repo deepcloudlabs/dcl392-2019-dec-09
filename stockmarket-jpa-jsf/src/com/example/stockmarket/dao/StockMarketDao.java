@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.inject.Singleton;
 import javax.persistence.EntityManager;
@@ -12,11 +13,18 @@ import javax.transaction.Transactional;
 
 import com.example.stockmarket.entity.Stock;
 
+/**
+ * 
+ * @author Binnur Kurt <binnur.kurt@gmail.com>
+ *
+ */
 @Named
 @Singleton
 public class StockMarketDao {
 	@PersistenceContext(unitName = "stockmarketPU")
 	private EntityManager entityManager;
+	@Inject
+	private AnotherStockDao anotherStockDao;
 
 	public Stock findStockBySymbol(String symbol) {
 		return entityManager.find(Stock.class, symbol);
@@ -33,13 +41,8 @@ public class StockMarketDao {
 	}
 
 	@Transactional
-	public void updateStock(Stock stock) {
-		String symbol = stock.getSymbol();
-		Stock managed = entityManager.find(Stock.class, symbol);
-		if (Objects.nonNull(managed)) {
-			managed.setCompany(stock.getCompany());
-			managed.setPrice(stock.getPrice());
-		}
+	public void updateStocks(List<Stock> stocks) {
+		stocks.parallelStream().forEach(anotherStockDao::updateStock);
 	}
 
 	@Transactional

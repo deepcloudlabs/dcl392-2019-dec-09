@@ -4,17 +4,22 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.PrePersist;
 import javax.persistence.Table;
-import javax.validation.constraints.Pattern;
 
+import com.example.stockmarket.constraints.StockSymbol;
+
+/**
+ * 
+ * @author Binnur Kurt <binnur.kurt@gmail.com>
+ *
+ */
 @Entity
 @Table(name = "stocks")
-@NamedQueries({
-	@NamedQuery(name="Stock.findAll", query = "select s from Stock s")
-})
+@NamedQueries({ @NamedQuery(name = "Stock.findAll", query = "select s from Stock s") })
 public class Stock {
 	@Id
-	@Pattern(regexp = "^[A-Z]{3,5}$")
+	@StockSymbol
 	private String symbol;
 	private String description;
 	private String company;
@@ -53,6 +58,11 @@ public class Stock {
 
 	public void setPrice(double price) {
 		this.price = price;
+	}
+
+	@PrePersist
+	public void beforePersist() {
+
 	}
 
 	@Override

@@ -9,25 +9,40 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.example.stockmarket.dao.StockMarketDao;
+import com.example.stockmarket.entity.Stock;
 import com.example.stockmarket.service.StockMarketSimulator;
 
 /**
- * Servlet implementation class StockMarketController
+ * 
+ * @author Binnur Kurt <binnur.kurt@gmail.com>
+ *
  */
 @WebServlet(urlPatterns = "/test")
 public class StockMarketController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-    @Inject private StockMarketSimulator simulator;
-    
-    public StockMarketController() {
-        super();
-    }
+	@Inject
+	private StockMarketSimulator simulator;
+	@Inject
+	private StockMarketDao stockMarketDao;
 
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.getOutputStream().println("<h1>"+simulator.getClass().toString()+"</h1>");
+	public StockMarketController() {
+		super();
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		response.getOutputStream().println("<h1>" + simulator.getClass().toString() + "</h1>");
+		Stock stock = new Stock();
+		stock.setSymbol("1ABC");
+		stock.setPrice(100);
+		stock.setDescription("Description");
+		stock.setCompany("My Company");
+		stockMarketDao.createStock(stock);
+	}
+
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doGet(request, response);
 	}
 
