@@ -1,0 +1,12 @@
+<root>
+  <facet id="jst.jaxrs">
+    <node name="libprov">
+      <attribute name="provider-id" value="org.eclipse.payara.tools.jaxrsLibraryproviderID"/>
+    </node>
+  </facet>
+  <facet id="jst.jsf">
+    <node name="libprov">
+      <attribute name="provider-id" value="jsf-no-op-library-provider"/>
+    </node>
+  </facet>
+</root>
