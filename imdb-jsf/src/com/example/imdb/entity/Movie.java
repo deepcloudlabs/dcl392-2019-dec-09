@@ -1,11 +1,12 @@
 package com.example.imdb.entity;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * 
- * @author Binnur Kurt
+ * @author Binnur Kurt <binnur.kurt@gmail.com>
  *
  */
 @SuppressWarnings("serial")
@@ -103,9 +104,8 @@ public class Movie implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Movie [id=" + id + ", title=" + title + ", year=" + year
-				+ ", imdb=" + imdb + ", genres=" + genres + ", directors="
-				+ directors + "]";
+		return "Movie [id=" + id + ", title=" + title + ", year=" + year + ", imdb=" + imdb + ", genres=" + genres
+				+ ", directors=" + directors + "]";
 	}
 
 }

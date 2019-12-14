@@ -2,12 +2,15 @@ package com.example.imdb.entity;
 
 import java.io.Serializable;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
 /**
  * 
- * @author Binnur Kurt
+ * @author Binnur Kurt <binnur.kurt@gmail.com>
  *
  */
 @SuppressWarnings("serial")
+@XmlRootElement
 public class Genre implements Serializable {
 	private int id;
 	private String name;
